@@ -23,7 +23,7 @@ export const useDbStore = create((set) => ({
         set({ isLoading: true, error: null });
         try {
             // Passiamo la pagina e il limite (10) come query string
-            const response = await apiClient.get(`/characters?page=${page}&limit=10`);
+            const response = await apiClient.get(`/characters?page=${page}&limit=8`);
             set({
                 characters: response.data.items,
                 charactersMeta: {
@@ -51,7 +51,7 @@ export const useDbStore = create((set) => ({
     fetchPlanets: async (page = 1) => {
         set({ isLoading: true, error: null });
         try {
-            const response = await apiClient.get(`/planets?page=${page}&limit=10`);
+            const response = await apiClient.get(`/planets?page=${page}&limit=12`);
             set({
                 planets: response.data.items,
                 planetsMeta: {

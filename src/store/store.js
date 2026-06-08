@@ -10,7 +10,7 @@ export const useDbStore = create((set) => ({
   fetchCharacters: async () => {
     set({ isLoading: true, error: null });
     try {
-      const response = await apiClient.get('/characters');
+      const response = await apiClient.get('/characters?limit=12');
       set({ characters: response.data.items, isLoading: false });
     } catch (error) {
       set({ error: error.message, isLoading: false });
