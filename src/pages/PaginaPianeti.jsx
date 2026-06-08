@@ -37,12 +37,16 @@ export default function ListaPianeti() {
     );
   }
 
+    // Gestione errore
   if (error) {
     return (
       <Center style={{ height: "50vh", flexDirection: "column" }}>
+        {/* order dice di far apparire un tag h2 html
+        c è il colore del testo */}
         <Title order={2} c="red.7">
           Si è verificato un errore
         </Title>
+        {/* c dimmet è un testo di colore grigio opaco neutro */}
         <Text c="dimmed">{error}</Text>
       </Center>
     );
