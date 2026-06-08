@@ -16,6 +16,15 @@ export const useDbStore = create((set) => ({
       set({ error: error.message, isLoading: false });
     }
   },
+  fetchCharacterById: async (id) => {
+    set({ isLoading: true, error: null, currentCharacter: null });
+    try {
+      const response = await apiClient.get(`/characters/${id}`);
+      set({ currentCharacter: response.data, isLoading: false });
+    } catch (error) {
+      set({ error: error.message, isLoading: false });
+    }
+  },
 
   fetchPlanets: async () => {
     set({ isLoading: true, error: null });

@@ -6,6 +6,8 @@ import { BrowserRouter , Routes , Route} from 'react-router-dom';
 import { dragonBallTheme } from './theme';
 import { Navbar } from './components/Navbar';
 import Characterpage from './pages/Characterpage'
+import SinglePage from './pages/SinglePage';
+
 function App() {
   return (
     <MantineProvider theme={dragonBallTheme} defaultColorScheme="dark">
@@ -13,6 +15,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path = "/personaggi" element={<Characterpage/>} />
+          <Route path='/personaggi/:id' element={<SinglePage/>} />
         </Routes>
       </BrowserRouter>
     </MantineProvider>
