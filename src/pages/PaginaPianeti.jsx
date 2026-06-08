@@ -37,19 +37,29 @@ export default function ListaPianeti() {
     );
   }
 
+    // Gestione errore
   if (error) {
     return (
       <Center style={{ height: "50vh", flexDirection: "column" }}>
+        {/* order dice di far apparire un tag h2 html
+        c è il colore del testo */}
         <Title order={2} c="red.7">
           Si è verificato un errore
         </Title>
+        {/* c dimmet è un testo di colore grigio opaco neutro */}
         <Text c="dimmed">{error}</Text>
       </Center>
     );
   }
 
   return (
+    // Centra il contenuto della pagina nello schermo
+    // GLi da una larghezza massima e aggiunge uno
+    // spazio vuoto sopra e sotto
     <Container size="lg" py="xl">
+        {/* titolo, centra il testo che avrà tag h1
+        colora il testo usando il blu del tema e mette un
+        piccolo margin bottom */}
       <Title ta="center" order={1} c="dbBlue.9" mb="xs">
         Pianeti Dragon Ball
       </Title>
@@ -58,8 +68,14 @@ export default function ListaPianeti() {
         Seleziona un pianeta
       </Text>
 
+        {/* prende le card e le dispone a griglia
+        rendendole responsive */}
+        {/* cols dice quante colonne mostrare in base alla
+        larghezza dello schermo
+        con spacing imposta la distanza tra una card e l'altra */}
       <SimpleGrid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="lg">
         {planets.map((pianeta) => (
+            // card dei pianeti
           <Card
             key={pianeta.id}
             padding="lg"
@@ -69,6 +85,7 @@ export default function ListaPianeti() {
               justifyContent: "space-between",
             }}
           >
+            {/* contiene gli elementi della card */}
             <Card.Section p="md">
               <Image
                 src={pianeta.image}
@@ -84,19 +101,25 @@ export default function ListaPianeti() {
 
             <Center mb="md" style={{ flexGrow: 1, alignItems: "flex-end" }}>
               {pianeta.isDestroyed ? (
+                // Mostra lo stato rosso se distrutto 
                 <Badge color="red" variant="light" size="md">
                   💥 Distrutto
                 </Badge>
               ) : (
+                // verde se intatto
                 <Badge color="green" variant="light" size="md">
                   🌌 Intatto
                 </Badge>
               )}
             </Center>
 
+              {/* prende il colore arancione e lo allarga per occupare
+              l'intera card */}
             <Button
               fullWidth
               onClick={() => gestisciShowDetails(pianeta.id)}
+            // Mette il testo in grassetto. Al click fa partire
+            // la funzione che porta alla pagina dei dettagli
               fw={700}
             >
               Vedi Dettagli
