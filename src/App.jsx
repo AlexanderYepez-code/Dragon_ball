@@ -9,7 +9,7 @@ import Characterpage from './pages/Characterpage'
 import { Footer } from './components/Footer';
 import LandingPage from './pages/LandingPage';
 import ListaPianeti from './pages/PaginaPianeti';
-import SinglePage from './pages/SinglePage';
+// import SinglePage from './pages/SinglePage';
 
 function App() {
   return (
@@ -20,8 +20,8 @@ function App() {
           <Route path = "/" element={<LandingPage/>} />
           <Route path = "/personaggi" element={<Characterpage/>} />
 
-          <Route path="/" element={<ListaPianeti />} />
-          <Route path="/pianeta/:id" element={<div>Dettagli Pianeta</div>}/>
+          <Route path="/pianeti" element={<ListaPianeti />} />
+          {/* <Route path="/pianeta/:id" element={</>}/> */}
         </Routes>
         <Footer/>
       </BrowserRouter>
