@@ -31,10 +31,10 @@ export default function HeroSection() {
                 </Text>
 
                 <Group justify="center" mt="xl" gap="md">
-                    <Button size="xl" radius="xl" color="dbOrange" onClick={() => navigate('/characters')}>
+                    <Button size="xl" radius="xl" color="dbOrange" onClick={() => navigate('/personaggi')}>
                         Vedi Personaggi
                     </Button>
-                    <Button size="xl" radius="xl" variant="outline" color="gray.4" onClick={() => navigate('/planets')}>
+                    <Button size="xl" radius="xl" variant="outline" color="gray.4" onClick={() => navigate('/pianeti')}>
                         Esplora Pianeti
                     </Button>
                 </Group>
