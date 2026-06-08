@@ -18,9 +18,7 @@ function App() {
         <Routes>
           <Route path = "/" element={<LandingPage/>} />
           <Route path = "/personaggi" element={<Characterpage/>} />
-
-          <Route path="/" element={<ListaPianeti />} />
-          <Route path="/pianeta/:id" element={<div>Dettagli Pianeta</div>}/>
+          <Route path="/pianeti/:id" element={<ListaPianeti />}/>
         </Routes>
         <Footer/>
       </BrowserRouter>
