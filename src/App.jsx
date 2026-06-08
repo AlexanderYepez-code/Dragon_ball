@@ -9,6 +9,7 @@ import Characterpage from './pages/Characterpage'
 import { Footer } from './components/Footer';
 import LandingPage from './pages/LandingPage';
 import ListaPianeti from './pages/PaginaPianeti';
+import SinglePage from './pages/SinglePage';
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
         <Routes>
           <Route path = "/" element={<LandingPage/>} />
           <Route path = "/personaggi" element={<Characterpage/>} />
-          <Route path="/pianeti/:id" element={<ListaPianeti />}/>
+
+          <Route path="/" element={<ListaPianeti />} />
+          <Route path="/pianeta/:id" element={<div>Dettagli Pianeta</div>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>
