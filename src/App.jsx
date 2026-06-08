@@ -5,7 +5,7 @@ function App() {
   return (
     <MantineProvider theme={dragonBallTheme} defaultColorScheme="dark">
 
-
+    <Navbar/>
       
     </MantineProvider>
   );
