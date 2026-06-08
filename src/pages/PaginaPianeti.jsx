@@ -1,0 +1,109 @@
+import { useDbStore } from "../store/store";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  Container,
+  Title,
+  Text,
+  SimpleGrid,
+  Card,
+  Image,
+  Badge,
+  Button,
+  Loader,
+  Center,
+} from "@mantine/core";
+
+export default function ListaPianeti() {
+  const navigate = useNavigate();
+
+  const { planets, fetchPlanets, isLoading, error } = useDbStore();
+
+  useEffect(() => {
+    fetchPlanets();
+  }, [fetchPlanets]);
+
+  const gestisciShowDetails = (idPianeta) => {
+    navigate(`/pianeta/${idPianeta}`);
+  };
+
+  if (isLoading) {
+    return (
+    // <Center> unisce 'display: flex', 'justify-content: center' e 'align-items: center'
+    // 'style={{ height: "50vh" }}' imposta l'altezza a metà della schermata del browser
+      <Center style={{ height: "50vh" }}>
+        <Loader size="xl" type="dots" />
+      </Center>
+    );
+  }
+
+  if (error) {
+    return (
+      <Center style={{ height: "50vh", flexDirection: "column" }}>
+        <Title order={2} c="red.7">
+          Si è verificato un errore
+        </Title>
+        <Text c="dimmed">{error}</Text>
+      </Center>
+    );
+  }
+
+  return (
+    <Container size="lg" py="xl">
+      <Title ta="center" order={1} c="dbBlue.9" mb="xs">
+        Pianeti Dragon Ball
+      </Title>
+
+      <Text ta="center" c="dimmed" mb="xl">
+        Seleziona un pianeta
+      </Text>
+
+      <SimpleGrid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="lg">
+        {planets.map((pianeta) => (
+          <Card
+            key={pianeta.id}
+            padding="lg"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <Card.Section p="md">
+              <Image
+                src={pianeta.image}
+                alt={pianeta.name}
+                height={160}
+                fit="contain"
+              />
+            </Card.Section>
+
+            <Title order={3} size="h4" ta="center" mt="md" mb="xs" c="dbBlue.8">
+              {pianeta.name}
+            </Title>
+
+            <Center mb="md" style={{ flexGrow: 1, alignItems: "flex-end" }}>
+              {pianeta.isDestroyed ? (
+                <Badge color="red" variant="light" size="md">
+                  💥 Distrutto
+                </Badge>
+              ) : (
+                <Badge color="green" variant="light" size="md">
+                  🌌 Intatto
+                </Badge>
+              )}
+            </Center>
+
+            <Button
+              fullWidth
+              onClick={() => gestisciShowDetails(pianeta.id)}
+              fw={700}
+            >
+              Vedi Dettagli
+            </Button>
+          </Card>
+        ))}
+      </SimpleGrid>
+    </Container>
+  );
+}
