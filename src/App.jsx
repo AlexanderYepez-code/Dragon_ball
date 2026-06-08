@@ -6,7 +6,9 @@ import { BrowserRouter , Routes , Route} from 'react-router-dom';
 import { dragonBallTheme } from './theme';
 import { Navbar } from './components/Navbar';
 import Characterpage from './pages/Characterpage'
-import SinglePage from './pages/SinglePage';
+import { Footer } from './components/Footer';
+import LandingPage from './pages/LandingPage';
+import ListaPianeti from './pages/PaginaPianeti';
 
 function App() {
   return (
@@ -14,9 +16,13 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
+          <Route path = "/" element={<LandingPage/>} />
           <Route path = "/personaggi" element={<Characterpage/>} />
-          <Route path='/personaggi/:id' element={<SinglePage/>} />
+
+          <Route path="/" element={<ListaPianeti />} />
+          <Route path="/pianeta/:id" element={<div>Dettagli Pianeta</div>}/>
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </MantineProvider>
   );

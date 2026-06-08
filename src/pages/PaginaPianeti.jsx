@@ -99,8 +99,6 @@ export default function ListaPianeti() {
               {pianeta.name}
             </Title>
 
-
-            
             <Center mb="md" style={{ flexGrow: 1, alignItems: "flex-end" }}>
               {pianeta.isDestroyed ? (
                 // Mostra lo stato rosso se distrutto 

@@ -12,6 +12,7 @@ export function Navbar() {
       py="md"
       //usa colore #002966
       bg="dbBlue.8"
+
     >
       {/* titolo stilizzato   */}
       {/* order{2} significa h2 */}
